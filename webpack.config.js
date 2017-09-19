@@ -43,8 +43,15 @@ module.exports = function (env) {
     if (env === 'production') {
         return merge([
             {
+                entry: {
+                    'main.min': PATHS.source + '/app.js',
+                },
+                output: {
+                    path: PATHS.build,
+                    filename: 'js/[name].js'
+                },
                 plugins: [
-                    new CleanWebpackPlugin([PATHS.build])   
+                    new CleanWebpackPlugin([PATHS.build])
                 ]
             },
             common,
